@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予約ページ</title>
+    <style>
+        /* 全体の基本設定 */
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #fff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* フォーム全体のコンテナ */
+        .reservation-form {
+            width: 100%;
+            max-width: 600px; /* PCでの最大幅 */
+        }
+
+        /* 入力行（ラベルと入力欄のセット） */
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* ラベル（氏名、電話など）のスタイル */
+        .form-group label {
+            width: 160px; /* ラベルの幅を固定して揃える */
+            font-size: 18px;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        /* 入力欄（input/textarea）の共通スタイル */
+        .form-group input, 
+        .form-group textarea {
+            flex: 1; /* 残りの幅をすべて使う */
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #000;
+            border-radius: 50px; /* デザインに合わせた丸み */
+            outline: none;
+            box-sizing: border-box; /* パディングを含めたサイズ計算 */
+        }
+
+        /* 要望欄（複数行テキスト）の個別設定 */
+        .form-group textarea {
+            border-radius: 20px; /* テキストエリアは少し角を落とす程度 */
+            height: 100px;
+            resize: vertical; /* 上下方向のみサイズ変更可能 */
+        }
+
+        /* 送信ボタンのエリア */
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* 送信ボタンのスタイル */
+        .submit-btn {
+            background-color: #d3d3d3; /* 薄いグレー */
+            color: #000;
+            font-size: 32px;
+            font-weight: bold;
+            padding: 15px 60px;
+            border: 2px solid #000;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* ホバー時のアニメーション */
+        }
+
+        /* ボタンにマウスを乗せた時 */
+        .submit-btn:hover {
+            background-color: #bbbbbb;
+        }
+
+        /* --- スマホ向けの調整（レスポンシブ） --- */
+        @media (max-width: 480px) {
+            .form-group {
+                flex-direction: column; /* 縦並びにする */
+                align-items: flex-start;
+            }
+            .form-group label {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+            .form-group input, 
+            .form-group textarea {
+                width: 100%;
+            }
+            .submit-btn {
+                width: 100%; /* スマホではボタンを横いっぱいに */
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <form class="reservation-form">
+        <div class="form-group">
+            <label for="name">氏名（カタカナ）</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="tel">電話</label>
+            <input type="tel" id="tel" name="tel" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">メール</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="date">日付</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="time">時間</label>
+            <input type="time" id="time" name="time" required>
+        </div>
+
+        <div class="form-group">
+            <label for="requests">要望（何かあれば）</label>
+            <textarea id="requests" name="requests"></textarea>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="submit-btn">送信</button>
+        </div>
+    </form>
+
+</body>
+</html>
